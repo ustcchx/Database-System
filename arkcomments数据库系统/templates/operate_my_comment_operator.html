@@ -1,0 +1,31 @@
+<!doctype html>
+<title>管理我的评论</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='user_comments.css') }}">
+<!-- <link rel="stylesheet" href="../static/style_simple.css"> -->
+<body>
+    <html>
+        <form method="post">
+            <p>评论内容：</p>
+            <textarea name="words" cols="30" rows="9" placeholder="修改内容" style="margin-left: 5%;"></textarea>
+            <p>强度星级：
+            <select name="Strength">
+                <option value="1" label="1"></option>
+                <option value="2" label="2"></option>
+                <option value="3" label="3"></option>
+                <option value="4" label="4"></option>
+                <option value="5" label="5"></option>
+            </select></p>
+            <p>泛用星级：
+            <select name="Generic">
+                <option value="1" label="1"></option>
+                <option value="2" label="2"></option>
+                <option value="3" label="3"></option>
+                <option value="4" label="4"></option>
+                <option value="5" label="5"></option>
+            </select></p>
+            <p>点击无视修改评论，直接删除评论：<input name="删除" type="checkbox" ></p>
+            <button name="提交" type="submit">提交</button>
+        </form>
+    </html>
+</body>

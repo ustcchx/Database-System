@@ -1,0 +1,75 @@
+<!doctype html>
+<title>管理员修改</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='enemy_all.css') }}">
+<body>
+    <html>
+        <a href="{{url_for('choise')}}" style="position: fixed;">点击返回</a>
+        <table style="margin-left: 10%; width: 80%;">
+            <thead>
+                <tr>
+                    <th>干员代号</th>
+                    <th>干员职业</th>
+                    <th>干员星级</th>
+                    <th>干员最大攻击力</th>
+                    <th>干员最大生命</th>
+                    <th>干员最大防御力</th>
+                    <th>干员法抗</th>
+                    <th>添加数据</th>
+                </tr>
+            </thead>
+            <tbody>
+                <form method="post">
+                <tr>
+                    <th><input type="text" placeholder="干员代号" name="Oname" style="width: 80px; margin-left: 5%;"></th>
+                    <th><input type="text" placeholder="干员职业" name="Oprofession"></th>
+                    <th><input type="text" placeholder="干员星级" name="Ostar" style="width: 80px; margin-left: 5%;"></th>
+                    <th><input type="number" placeholder="干员最大攻击力" name="Oattack" style="width: 80px; margin-left: 5%;"></th>
+                    <th><input type="number" placeholder="干员最大生命" name="Olife" style="width: 80px; margin-left: 5%;"></th>
+                    <th><input type="number" placeholder="干员最大防御力" name="Orecovery" style="width: 80px; margin-left: 5%;"></th>
+                    <th><input type="number" placeholder="干员法抗" name="Omagic" style="width: 80px; margin-left: 5%;"></th>
+                    
+                    <th><button name="insert"type="submit" >添加数据</button></th>
+                </tr>
+                </form>
+            </tbody>
+        </table>
+        <br> <br> <br>
+        <table style="margin-left: 10%;">
+            <thead>
+                <tr>
+                    <th>干员代号</th>
+                    <th>干员职业</th>
+                    <th>干员星级</th>
+                    <th>干员最大生命</th>
+                    <th>干员最大攻击力</th>
+                    <th>干员最大防御力</th>
+                    <th>删除数据</th>
+                </tr>
+            </thead>
+            <form method="post">
+            要删除的干员：
+            <input type="text" placeholder="干员ID" name="OID" id="OID">
+            <tr><button name="搜索" type="submit">搜索</button></tr>
+                <br>
+                {%for operator in operators%}
+                <tr>
+                    <th>{{operator[1]}}</th>
+                    <th>{{operator[2]}}</th>
+                    <th>{{operator[3]}}</th>
+                    <th>{{operator[4]}}</th>
+                    <th>{{operator[5]}}</th>
+                    <th>{{operator[6]}}</th>
+                    <th><input type="checkbox" name="delete_operator" value="{{operator[0]}}"></th>
+                </tr>
+                {%endfor%}
+                <tfoot>
+                    <tr>
+                        <td colspan="7"><button name="delete" type="submit">确定删除</button></td>
+                    </tr>
+                </tfoot>
+                </form>
+            </tbody>
+        </table>
+    </html>
+</body>

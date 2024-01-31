@@ -1,0 +1,72 @@
+<!doctype html>
+<title>敌方评论</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='comments.css') }}">
+<body>
+<html>
+    <a href="{{url_for('choise')}}" style="position: fixed;" onclick="fun()">点击返回</a>
+    <br><br>
+    <h2 style="text-align: center;">{{ operator_enemy }}评论区</h2>
+    <table>
+    <tbody>
+    <thead id="add_comment">
+    <tr>
+        <th>
+            <form method="post">
+                <textarea name="words" style="margin-left: 10%; width: 80%;" rows="8" placeholder="评价内容"></textarea>
+                <br>
+                <P style="margin-left: 10%">
+                敌方强度评分：
+                <select name="Strength">
+                    <option value="1" label="1"></option>
+                    <option value="2" label="2"></option>
+                    <option value="3" label="3"></option>
+                    <option value="4" label="4"></option>
+                    <option value="5" label="5"></option>
+                </select>
+                </P>
+                <P style="margin-left: 10%">
+                敌方机制评分： 
+                <select name="Hate">
+                    <option value="1" label="1"></option>
+                    <option value="2" label="2"></option>
+                    <option value="3" label="3"></option>
+                    <option value="4" label="4"></option>
+                    <option value="5" label="5"></option>
+                </select>
+                </P>
+                <br><br>
+                <button name="insert" value="insert" type="submit" style="margin-left: 45%;">添加评论</button>
+            </form>
+        </th>
+    </tr>
+    </thead>
+    <form method="post">
+
+        {%for comment in comment%}
+        <tr>
+            <th>
+            <div style="display: inline-block; margin-left: 10%; width: 80%; word-break: break-all;">{{comment[1]}}</div>
+            <p style="margin-left: 10%;">敌方强度评分：{{comment[2]}}/5 &nbsp;&nbsp;敌方机制评分：{{comment[3]}}/5</p>
+            <p style="margin-left: 70%;">发布人：{{comment[4]}}</p>
+            <p style="margin-left: 70%;">发布时间：{{comment[5]}}</p>
+            <button type="submit" name="Report"value="{{comment[0]}}" style="margin-left: 85%;" onclick="alert('举报成功!')">举报</button>
+            </th>
+        </tr>
+        {%endfor%}
+    </form>
+    </tbody>
+
+    </table>
+    <div id="data_id" d="{{administor_or_user}}" style="display: none;"></div>
+</html>
+</body>
+<script>
+    function fun(){
+        var administor_or_user_flag=document.getElementById('data_id').getAttribute('d')
+        if(administor_or_user_flag == 0){
+            document.getElementById('add_comment').style.display='none';
+        }
+    }
+    window.fun();
+</script>

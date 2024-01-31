@@ -1,0 +1,107 @@
+<!doctype html>
+<title>个人信息</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='personal_info.css') }}">
+<!-- <link rel="stylesheet" href="../static/style_simple.css"> -->
+<body>
+<html>
+<h2 style="color: rgb(0, 0, 0);">Doctor {{ user_aministor }}, 您可以修改自己的评论或者个人信息</h2>
+
+    <div class="content_1" >
+        <div style="display: inline-block; margin-top: 15%; margin-left: 20%; ">
+            <a href="{{'operator_all'}}" class="choice_font" >干员评论</a>
+        </div>
+    </div>
+    <div class="content_2" style="display: inline-block;">
+        <div style="display: inline-block; margin-top: 15%; margin-left: 20%; ">
+            <a href="{{'enemy_all'}}" class="choice_font">敌方评论</a>
+        </div>
+    </div>
+    <div class="content_3" style="background-color: rgba(129, 129, 129, 0.7);">
+        <div style="display: inline-block; margin-top: 15%; margin-left: 20%; ">
+            <a href="{{'personal_info'}}" class="choice_font" style="color: aqua;">个人信息</a>
+        </div>
+    </div>
+    <div class="content_4">
+        <div style="display: inline-block; margin-top: 15%; margin-left: 20%; ">
+            <a href="{{'user_comments'}}" class="choice_font">评论操作</a>
+        </div>
+    </div>
+    <div class="content_5">
+        <div style="display: inline-block; margin-top: 15%; margin-left: 20%;">
+            <a href="{{'table'}}" class="choice_font">查看公告</a>
+        </div>
+    </div>
+<br><br><br><br><br>
+<form method="post">
+    <table id="user_info">
+        <thead>
+            <tr>
+                <th>昵称</th>
+                <th>密码</th>
+                <th>个性签名</th>
+                <th>GameID</th>
+                <th>性别</th>
+                <th>登出</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for my_info in my_infos %}
+        <tr>
+            <th>{{my_info[1]}}</th>
+            <th>{{my_info[2]}}</th>
+            <th>{{my_info[3]}}</th>
+            <th>{{my_info[4]}}</th>
+            <th>{{my_info[5]}}</th>
+            <th><button name="log_out"type="submit">登出</button></th>
+        </tr>
+        {% endfor %}
+    
+        </tbody>
+    </table>
+    <table id="administor_info" style="display: none;">
+        <thead>
+            <tr>
+                <th>管理员ID</th>
+                <th>昵称</th>
+                <th>密码</th>
+                <th>个性签名</th>
+                <th>GameID</th>
+                <th>性别</th>
+                <th>登出</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for administor_info in administor_infos %}
+        <tr>
+            <th>{{administor_info[0]}}</th>
+            <th>{{administor_info[1]}}</th>
+            <th>{{administor_info[2]}}</th>
+            <th>{{administor_info[3]}}</th>
+            <th>{{administor_info[4]}}</th>
+            <th>{{administor_info[5]}}</th>
+            <th><button name="log_out"type="submit">登出</button></th>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        <br><br>
+        <a href="{{url_for('change_info')}}" style="margin-left: 50%;">点击修改个人信息<a>
+</form>
+<div id="data_id" d="{{administor_or_user}}" style="display: none;"></div>
+</html>
+</body>
+<script>
+    function fun_check(){
+        var administor_or_user_flag=document.getElementById('data_id').getAttribute('d');
+        if(administor_or_user_flag!=1) {
+            document.getElementById('user_info').style.display='none';
+            document.getElementById('administor_info').style.display='table';
+        }
+        else{
+            document.getElementById('user_info').style.display='table';
+            document.getElementById('administor_info').style.display='none';
+        }
+    }
+    window.fun_check();
+</script>

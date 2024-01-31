@@ -1,0 +1,72 @@
+body{
+    background: url(87843686_p0.jpg);
+    background-attachment: fixed;
+    background-size: 100%;
+}
+table{
+    /* align-items: center; */
+    margin-left: 21%;
+    width: 60%;
+    border-collapse: collapse;
+}
+
+table caption{
+    font-size: 2em;
+    font-weight: bold;
+    margin: 1em 0;
+}
+
+th,td{
+    text-align: left;
+    border: 1px solid #999;
+    padding: 20px 0;
+}
+
+table thead tr{
+    background-color: rgba(195, 195, 195, 0.7);
+    color: #fff;
+}
+
+table tbody tr:nth-child(odd){
+    background-color: rgba(255, 255, 255, 0.7);
+}
+table tbody tr:nth-child(even){
+    background-color: rgba(195, 195, 195, 0.7);
+}
+
+table tbody tr:hover{
+    background-color:rgba(108, 108, 108, 0.7);
+}
+
+
+table tbody tr td:first-child{
+    color: #f40;
+}
+
+table tfoot tr td{
+    text-align: center;
+    padding-right: 20px;
+    background-color:rgba(255, 255, 255, 0.7);
+}
+.star-vote{
+    width:120px;
+    height:20px;
+    position:relative;
+    overflow:hidden;
+}
+.star-vote>span{
+    position:absolute;
+    width:120px;
+    height:20px;
+    background-size:cover;
+    background-repeat:no-repeat;
+    left:0px;
+    top:0px;
+}
+.star-vote>.add-star{
+    background-image:url("star.png");
+}
+.star-vote>.del-star{
+    background-image:url("star-trans.png");
+    background-color:rgba(255, 255, 255, 0);
+}

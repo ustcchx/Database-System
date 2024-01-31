@@ -1,0 +1,58 @@
+<!doctype html>
+<title>Tables</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style_simple.css') }}">
+<!-- <link rel="stylesheet" href="../static/style_simple.css"> -->
+<body>
+<html>
+  <header>
+    <h1 style="text-align:center;">Announcement</h1>
+  </header>
+  <table>
+    <thead>
+      <tr>
+        <th>公告内容</th>
+        <th>公告发布时间</th>
+        <th>公告发布管理者</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>这是新建的一个游戏评论社区</th>
+        <th>2023.6.14</th>
+        <th>anchor</th>
+      </tr>
+      {%for row in rows%}
+      <tr>
+        <th>{{row[1]}}</th>
+        <th>{{row[2]}}</th>
+        <th>{{row[3]}}</th>
+      </tr>
+      {%endfor%}
+    </tbody>
+    <tfoot>
+      <tr>
+          <td colspan="7"><a onclick="fun()" class="ad_btn">管理员点击操作公告内容<a></td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+<br>
+<div id="data_id" d="{{administor_or_user}}" style="display: none;"></div>
+<div id="ad_url" d="{{ url_for('post_ad') }} " style="display: none;"></div>
+<div class="click_ok"><a href="{{'choice'}}" style="color: rgb(104, 90, 230); text-decoration: none; margin-left: 9%; margin-top: 50%;">点击确认</a><div>
+</html>
+</body>
+
+<script>
+  function fun(){
+    var administor_or_user_flag=document.getElementById('data_id').getAttribute('d')
+    var ad_url=document.getElementById('ad_url').getAttribute('d')
+    if(administor_or_user_flag == 1){
+      alert("用户身份不能操作")
+    }
+    else{
+      window.location.href=ad_url
+    }
+  }
+</script>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>登陆界面</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+</head>
+<body class="container2">
+    <!-- 按钮模块 -->
+    <input type="checkbox" id="a12" hidden>
+    <i class="indicator"></i>
+    <label class="c2" for="a12"></label>
+    <!-- 日月交替模块 -->
+    <div id="container" class="dark">
+        <div class="bg"></div>
+        <div class="moon-box">
+            <div class="moon"></div>
+        </div>
+        <div class="sun-box">
+            <div class="sun"></div>
+        </div>
+        <div class="sea"></div>
+    </div>
+    <!-- 登录模块 -->
+    <form method="post">
+    <div class="form-box">
+        <div class="tit">Arkcomments &nbsp&nbsp&nbsp&nbsp&nbsp Login</div>
+        <input type="number" placeholder="Admin_ID" onkeypress="return (/[\d]/.test(String.fromCharCode(event.keyCode)))" id="AId" name="AId" required>
+        <input type="password" placeholder="Admin_password" name="Apassword" id="Apassword" required>
+        <button type="submit" name="log_in" value="log_in">登录</button>
+        <!-- <span>
+            没有账号？
+        </span> -->
+    </div>
+    </form>
+    <!-- 注册特效模块 -->
+    <div class="sign">
+        <input type="checkbox" id="search_btn" hidden>
+        <!-- <label class="search-btn" for="search_btn">
+            <i class="search" aria-hidden="true">点我注册</i>
+        </label> -->
+        <label class="close-btn" for="search_btn">
+            <i class="close" aria-hidden="true">&nbsp</i>
+        </label>
+        <div class="container3">
+            <!-- 注册界面 -->
+            <!-- 流星 -->
+            <div class="container4">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <h2 class="signin"><span>ARKCOMMENTS <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SIGN IN</span></h2>
+            <form method="post">
+            <div class="search-box s1">
+                <input type="number" placeholder="GameID"onkeypress="return (/[\d]/.test(String.fromCharCode(event.keyCode)))">
+            </div>
+            <div class="search-box  s1 s2">
+                <input type="text" placeholder="建立用户名">
+            </div>
+            <div class="search-box  s1 s3">
+                <input type="password" placeholder="输入密码">
+                <!-- <button class="verification-code">获取验证码</button> -->
+                <button class="sign-btn" type="submit" name="register" value="register">注册</button>
+            </div>
+            <form>
+            <!-- 利用这个盒子,把底下的checked/hover事件全盖住,嘿嘿嘿 -->
+            <div class="shade"></div>
+        </div>
+</body>
+ 
+</html>

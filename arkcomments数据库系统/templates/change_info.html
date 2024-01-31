@@ -1,0 +1,37 @@
+<!doctype html>
+<title>修改个人信息</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='change_info.css') }}">
+<!-- <link rel="stylesheet" href="../static/style_simple.css"> -->
+<body>
+<html>
+<h2 style="color: rgb(0, 0, 0);">Doctor {{ user_aministor }}, 您可以修改自己的评论或者个人信息</h2>
+<form method="post">
+游戏ID:
+<input type="number" placeholder="GameID" name="UgameID" id="UgameID" onkeypress="return (/[\d]/.test(String.fromCharCode(event.keyCode)))">
+<br><br>
+用户名修改：
+<input type="text" placeholder="用户名修改" name="Uname" id="Uname">
+<br><br>
+性别：
+<select name="Usex">
+    <option value="男">男</option>
+    <option value="女">女</option>
+</select>
+<br><br>
+个性签名：
+<input type="text" placeholder="个性签名" name="Usign" id="Usign">
+<br><br>
+原密码：
+<input type="password" placeholder="输入密码" name="Upassword_orin" id="Upassword_orin">
+<br><br>
+更换密码：
+<input type="password" placeholder="密码更换" name="Upassword_now" id="Upassword_now">
+<br><br>
+<div id="data_id" d="{{user_password_wrong}}" style="display: none;"></div>
+<button type="submit" onclick="fun()"name="确认" id="确认">确认修改</button>
+</form>
+<br><br>
+<p style="color: red; display: none;" id="password_p">输入原始密码错误</p>
+</html>
+</body>

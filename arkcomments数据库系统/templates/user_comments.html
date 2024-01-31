@@ -1,0 +1,174 @@
+<!doctype html>
+<title>我的评论</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='user_comments.css') }}">
+<!-- <link rel="stylesheet" href="../static/style_simple.css"> -->
+<body>
+    <html>
+    <h2>&nbsp;&nbsp;Welcome Back, Doctor {{ user_aministor }}</h2>
+    <div class="content_1">
+        <div style="display: inline-block; margin-top: 15%; margin-left: 20%;">
+            <a href="{{'operator_all'}}" class="choice_font">干员评论</a>
+        </div>
+    </div>
+    <div class="content_2" style="display: inline-block;">
+        <div style="display: inline-block; margin-top: 15%; margin-left: 20%;">
+            <a href="{{'enemy_all'}}" class="choice_font">敌方评论</a>
+        </div>
+    </div>
+    <div class="content_3">
+        <div style="display: inline-block; margin-top: 15%; margin-left: 20%;">
+            <a href="{{'personal_info'}}" class="choice_font">个人信息</a>
+        </div>
+    </div>
+    <div class="content_4" style="background-color: rgba(129, 129, 129, 0.7);">
+        <div style="display: inline-block; margin-top: 15%; margin-left: 20%;">
+            <a href="{{'user_comments'}}" class="choice_font" style="color: aqua;">评论操作</a>
+        </div>
+    </div>
+    <div class="content_5">
+        <div style="display: inline-block; margin-top: 15%; margin-left: 20%;">
+            <a href="{{'table'}}" class="choice_font">查看公告</a>
+        </div>
+    </div>
+    <br>
+    <form method="post">
+    
+    
+        <table id="operator_comment">
+            <br><br>
+            <thead>
+                <tr>
+                    <th>评论干员</th>
+                    <th>评论时间</th>
+                    <th>评论内容</th>
+                    <th>强度星级</th>
+                    <th>泛用星级</th>
+                    <th>操作评论</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for my_operator_comment in my_operator_comments %}
+            <tr>
+                <th>{{my_operator_comment[1]}}</th>
+                <th>{{my_operator_comment[2]}}</th>
+                <th>{{my_operator_comment[3]}}</th>
+                <th>{{my_operator_comment[4]}}</th>
+                <th>{{my_operator_comment[5]}}</th>
+                <th><button name="change_operator_ID"value="{{my_operator_comment[0]}}" type="submit" onclick="fun_operator()">点击操作</button></th>
+            </tr>
+            {%endfor%}
+            </tbody>
+        </table>
+        <br>
+        <table id="enemy_comment">
+            <thead>
+                <tr>
+                    <th>评论敌方</th>
+                    <th>评论时间</th>
+                    <th>评论内容</th>
+                    <th>机制星级</th>
+                    <th>强度星级</th>
+                    <th>操作评论</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for my_enemy_comment in my_enemy_comments %}
+            <tr>
+                <th>{{my_enemy_comment[1]}}</th>
+                <th>{{my_enemy_comment[2]}}</th>
+                <th>{{my_enemy_comment[3]}}</th>
+                <th>{{my_enemy_comment[4]}}</th>
+                <th>{{my_enemy_comment[5]}}</th>
+                <th><button name="change_enemy_ID" value="{{my_enemy_comment[0]}}" type="submit" onclick="fun_enemy()">点击操作</button></th>
+            </tr>
+            {%endfor%}
+            </tbody>
+            </tbody>
+        </table>
+        <form method="post">
+        <button id="post_btn" type="submit" style="display: none; margin-left: 75%;">提交处理</button>
+        <br><br>
+        <table id="report" style="display: none;">
+            <thead>
+                <tr>
+                    <th>用户名</th>
+                    <th>用户ID</th>
+                    <th>评论时间</th>
+                    <th>评论内容</th>
+                    <th>删除评论</th>
+                    <th>不删除评论</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for report in reports %}
+            <tr>
+                <th>{{report[1]}}</th>
+                <th>{{report[2]}}</th>
+                <th>{{report[3]}}</th>
+                <th>{{report[4]}}</th>
+                <th><input name="report_ID" value="{{report[0]}}" type="checkbox"></button></th>
+                <th><input name="report_ID_else" value="{{report[0]}}" type="checkbox"></button></th>
+            </tr>
+            {%endfor%}
+            
+            </tbody>
+            </tbody>
+        </table>
+        <br>
+        <table id="shutup"style="display: none;">
+            <thead>
+                <tr>
+                    <th>用户名</th>
+                    <th>用户ID</th>
+                    <th>禁言截止时间</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for shutup in shutups %}
+            <tr>
+                <th>{{shutup[0]}}</th>
+                <th>{{shutup[1]}}</th>
+                <th>{{shutup[2]}}</th>
+                <th><input name="shutup" value="{{shutup[0]}}" type="checkbox"></button></th>
+            </tr>
+            {%endfor%}
+            </form>
+            </tbody>
+            </tbody>
+</form>
+    <div id="data_url" d="{{'operate_my_comment_operator'}}" style="display: none;"></div>
+    <div id="data_urlS" d="{{'operate_my_comment_enemy'}}" style="display: none;"></div>
+    <div id="data_id" d="{{administor_or_user}}" style="display: none;"></div>
+</html>
+</body>
+<script>
+    window.fun_check();
+    function fun(){
+        // document.getElementById('operator_comment').style.display='table';
+        // document.getElementById('enemy_comment').style.display='none';
+    }
+    function fun1(){
+    //     document.getElementById('operator_comment').style.display='none';
+    //     document.getElementById('enemy_comment').style.display='table';
+     }
+    function fun_operator(){
+        var change_=document.getElementById('data_url').getAttribute('d');
+        window.location.href=change_;
+    }
+    function fun_enemy(){
+        var change_=document.getElementById('data_urlS').getAttribute('d');
+        window.location.href=change_;
+    }
+    function fun_check(){
+        var administor_or_user_flag=document.getElementById('data_id').getAttribute('d')
+        if(administor_or_user_flag!=1) {
+            document.getElementById('enemy_comment').style.display='none';
+            document.getElementById('operator_comment').style.display='none';
+            document.getElementById('report').style.display='table';
+            document.getElementById('shutup').style.display='table';
+            document.getElementById('post_btn').style.display='inline';
+        }
+    }
+    window.fun_check();
+</script>

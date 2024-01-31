@@ -1,0 +1,36 @@
+<!doctype html>
+<title>选择界面</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='choice.css') }}">
+<!-- <link rel="stylesheet" href="../static/style_simple.css"> -->
+<body>
+    <html>
+    <h2>&nbsp;&nbsp;Welcome Back, Doctor {{ user_aministor }}</h2>
+    <div class="content_1">
+        <div style="display: inline-block; margin-top: 15%; margin-left: 20%;">
+            <a href="{{'operator_all'}}" class="choice_font">干员评论</a>
+        </div>
+    </div>
+    <div class="content_2" style="display: inline-block;">
+        <div style="display: inline-block; margin-top: 15%; margin-left: 20%;">
+            <a href="{{'enemy_all'}}" class="choice_font">敌方评论</a>
+        </div>
+    </div>
+    <div class="content_3">
+        <div style="display: inline-block; margin-top: 15%; margin-left: 20%;">
+            <a href="{{'personal_info'}}" class="choice_font">个人信息</a>
+        </div>
+    </div>
+    <div class="content_4">
+        <div style="display: inline-block; margin-top: 15%; margin-left: 20%; ">
+            <a href="{{'user_comments'}}" class="choice_font">评论操作</a>
+        </div>
+    </div>
+    <div class="content_5">
+        <div style="display: inline-block; margin-top: 15%; margin-left: 20%;">
+            <a href="{{'table'}}" class="choice_font">查看公告</a>
+        </div>
+    </div>
+
+</html>
+</body>

@@ -1,0 +1,77 @@
+<!doctype html>
+<title>管理员修改</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='enemy_all.css') }}">
+<body>
+    <html>
+        <a href="{{url_for('choise')}}" style="position: fixed;">点击返回</a>
+        <table style="margin-left: 10%; width: 80%;">
+            <thead>
+                <tr>
+                    <th>敌方名称</th>
+                    <th>敌方类型</th>
+                    <th>地位级别</th>
+                    <th>敌方耐久</th>
+                    <th>敌方攻击</th>
+                    <th>敌方防御</th>
+                    <th>敌方法抗</th>
+                    <th>添加数据</th>
+                </tr>
+            </thead>
+            <tbody>
+                <form method="post">
+                <tr>
+                    <th><input type="text" placeholder="敌方名称" name="Ename" style="width: 80px; margin-left: 5%;"></th>
+                    <th><input type="text" placeholder="敌方种类" name="Ekind" style="width: 80px; margin-left: 5%;"></th>
+                    <th><input type="text" placeholder="地位级别" name="Elevel" style="width: 80px; margin-left: 5%;"></th>
+                    <th><input type="text" placeholder="敌方耐久" name="Eendure" style="width: 80px; margin-left: 5%;"></th>
+                    <th><input type="text" placeholder="敌方攻击" name="Eattack" style="width: 80px; margin-left: 5%;"></th>
+                    <th><input type="text" placeholder="敌方防御" name="Erecovery" style="width: 80px; margin-left: 5%;"></th>
+                    <th><input type="text" placeholder="敌方法抗" name="Emagic" style="width: 80px; margin-left: 5%;"></th>
+                    <th><button name="insert"type="submit" >添加数据</button></th>
+                </tr>
+                </form>
+            </tbody>
+        </table>
+        <br> <br> <br>
+        <table style="margin-left: 10%;">
+            <thead>
+                <tr>
+                    <th>敌方名称</th>
+                    <th>敌方种类</th>
+                    <th>地位级别</th>
+                    <th>敌方耐久</th>
+                    <th>敌方攻击</th>
+                    <th>敌方防御</th>
+                    <th>敌方法抗</th>
+                    <th>删除数据</th>
+                </tr>
+            </thead>
+            <form method="post">
+            要删除的敌方：
+            <input type="text" placeholder="敌方ID" name="EID" id="EID">
+            <tr><button name="搜索" type="submit">搜索</button></tr>
+            <tbody>
+                
+                {%for enemy in enemys%}
+                <tr>
+                    <th>{{enemy[1]}}</th>
+                    <th>{{enemy[2]}}</th>
+                    <th>{{enemy[3]}}</th>
+                    <th>{{enemy[4]}}</th>
+                    <th>{{enemy[5]}}</th>
+                    <th>{{enemy[6]}}</th>
+                    <th>{{enemy[7]}}</th>
+                    <th><input type="checkbox" name="delete_enemy" value="{{enemy[0]}}"></th>
+                </tr>
+                {%endfor%}
+                <tfoot>
+                    <tr>
+                        <td colspan="8"><button name="delete" type="submit">确定删除</button></td>
+                    </tr>
+                </tfoot>
+                </form>
+            </tbody>
+        </table>
+    </html>
+</body>

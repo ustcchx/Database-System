@@ -1,0 +1,82 @@
+<!doctype html>
+<title>操作公告</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style_simple.css') }}">
+<!-- <link rel="stylesheet" href="../static/style_simple.css"> -->
+    <!-- <div class="content">
+        <br>
+        <button class="post_ad_btn" onclick="fun1()">新建通知</button>
+        <button class="delete_ad_btn" onclick="fun2()">删除通知</button>
+        <button type="submit" class="ok_ad_btn" onclick="fun3()">操作完成</button>
+        <form method="post">
+            <textarea rows="16" cols="80" class="post_ad" placeholder="管理员新建通知" id="post_ad_content" name="post_ad_content"></textarea>
+        <div id="now_ad_content"> -->
+            <!-- <tbody > -->
+            <!-- {% for row in rows %}
+            efrryujyk
+            <tr>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td style="width: 50%"> {{ row[0]  }}</td>
+            <td>.&nbsp;&nbsp;&nbsp;</td>
+            <td style="width: 50%"> {{ row[1] }}</td>
+            <tr>
+            {% endfor %} -->
+            <!-- </tbody> -->
+            <!-- {% for row in rows %}
+            <br><br><br><br><br> 
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" name="delete_ad_1" value="delete_ad_1">通知1：goridjthoijyikjpotiy {{ row[0]  }}</input>
+            <br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" name="delete_ad_2" value="delete_ad_2">通知2：efiuestguydirthodtrolhyjt {{ row[1]  }}</input>
+            <br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" name="delete_ad_2" value="delete_ad_2">通知3：efiuestguydirthodtrolhyjt {{ row[2]  }}</input>
+            {% endfor %}
+            <br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            请管理员勾选已有通知进行删除
+        </div>
+        </form>
+    </div>
+    <div id="table_url" d="{{ url_for('table') }} " style="display: none;"></div>-->
+<body>
+    <html>
+        <h2 style="text-shadow: 2px;">&nbsp;&nbsp;Welcome Back, Doctor {{ user_aministor }}</h2>
+        <header>
+        <h1 style="text-align:center;">Announcement</h1>
+        </header>
+        <form method="post">
+        <table>
+            <thead>
+              <tr>
+                <th>公告内容</th>
+                <th>公告发布时间</th>
+                <th>公告发布管理者</th>
+                <th>删除公告</th>
+              </tr>
+            </thead>
+            <tbody>
+              {%for row in rows%}
+              <tr>
+                <th>{{row[1]}}</th>
+                <th>{{row[2]}}</th>
+                <th>{{row[3]}}</th>
+                <th><input type="checkbox" name="delete_ad" value="{{row[0]}}"></th>
+              </tr>
+              {%endfor%}
+            </tbody>
+            <tfoot>
+              <tr>
+                  <td colspan="7"><textarea rows="8" cols="80" class="post_ad" placeholder="管理员新建通知" id="post_ad_content" name="post_ad_content"></textarea></td>
+              </tr>
+            </tfoot>
+          </table>
+        
+        </div>
+        <br>
+        <div class="click_ok"><button type="submit">操作确认</button><div>
+        </form>
+        </html>
+    </body>
+

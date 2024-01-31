@@ -1,0 +1,96 @@
+<!doctype html>
+<title>干员数据</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='operator_all.css') }}">
+<!-- <link rel="stylesheet" href="../static/style_simple.css"> -->
+<body>
+<html>
+<h2 style="color: rgb(0, 0, 0);">Doctor {{ user_aministor }}, 选择你想阅读的评论区</h1>
+    <div class="content_1" style="background-color: rgba(129, 129, 129, 0.7);">
+        <div style="display: inline-block; margin-top: 15%; margin-left: 20%; ">
+            <a href="{{'operator_all'}}" class="choice_font" style="color: aqua;">干员评论</a>
+        </div>
+    </div>
+    <div class="content_2" style="display: inline-block;">
+        <div style="display: inline-block; margin-top: 15%; margin-left: 20%; ">
+            <a href="{{'enemy_all'}}" class="choice_font">敌方评论</a>
+        </div>
+    </div>
+    <div class="content_3">
+        <div style="display: inline-block; margin-top: 15%; margin-left: 20%; ">
+            <a href="{{'personal_info'}}" class="choice_font">个人信息</a>
+        </div>
+    </div>
+    <div class="content_4">
+        <div style="display: inline-block; margin-top: 15%; margin-left: 20%; ">
+            <a href="{{'user_comments'}}" class="choice_font">评论操作</a>
+        </div>
+    </div>
+    <div class="content_5">
+        <div style="display: inline-block; margin-top: 15%; margin-left: 20%;">
+            <a href="{{'table'}}" class="choice_font">查看公告</a>
+        </div>
+    </div>
+<br><br><br>
+<table>
+    <thead>
+        <tr>
+            <th>干员代号</th>
+            <th>干员职业</th>
+            <th>干员星级</th>
+            <th>干员最大生命</th>
+            <th>干员最大攻击力</th>
+            <th>干员最大防御力</th>
+            <th>进入评论区</th>
+            <!-- <th>干员法抗</th> -->
+        </tr>
+    </thead>
+    <form method="post">
+        <p style="margin-left: 25%;">要查找的干员：
+        <input type="text" placeholder="干员名称" name="Oname" id="Oname" >
+        <button name="搜索" type="submit">搜索</button>
+        </p>
+    <tbody>
+        
+        {%for operator in operators%}
+        <tr>
+            <th>{{operator[1]}}</th>
+            <th>{{operator[2]}}</th>
+            <th>{{operator[3]}}</th>
+            <th>{{operator[4]}}</th>
+            <th>{{operator[5]}}</th>
+            <th>{{operator[6]}}</th>
+            <th><button name="OID" value="{{operator[0]}}" type="submit" >点击进入</button></th>
+            <!-- <th>{{operator[7]}}</th> -->
+        </tr>
+        {%endfor%}
+    </form>
+        <tfoot>
+            <tr>
+                <td colspan="7"><a onclick="fun()">管理员点击操作干员数据<a></td>
+            </tr>
+        </tfoot>
+    </tbody>
+    <div id="data_id" d="{{administor_or_user}}" style="display: none;"></div>
+    <div id="ad_url" d="{{'admin_op_change'}} " style="display: none;"></div>
+</table>
+</body>
+<script>
+    function fun(){
+      var administor_or_user_flag=document.getElementById('data_id').getAttribute('d')
+      var ad_url=document.getElementById('ad_url').getAttribute('d')
+      if(administor_or_user_flag == 1){
+        alert("用户身份不能操作")
+      }
+      else{
+        window.location.href=ad_url
+      }
+    }
+  </script>
+<!-- 先锋Vanguard
+近卫Guard
+医疗Medic
+特种Specialis
+辅助Supportor
+狙击Sniper
+术士Caster -->
